@@ -1,12 +1,9 @@
-<script setup></script>
-
 <template>
-  <div><RouterView/></div>
-  
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div>
+    <RouterView />
+  </div>
 </template>
+
+<script setup></script>
 
 <style scoped></style>
