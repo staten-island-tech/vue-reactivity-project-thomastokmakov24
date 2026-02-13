@@ -1,15 +1,17 @@
 <template>
-    <div>
-        <h2>{{ animal.name }}</h2>
-      <h3>{{ animal.species }}</h3>
-    </div>
+    <div class="blade">
+        <h2>{{ sword.name }}</h2>
+      <h3>{{ sword.part }}</h3>
+      <img class="BladeImg" src=${cry.BladeImg} alt="bladeIMG isnt working"/>
+        
+</div>
 </template>
 
 
 
 <script setup>
 defineProps({
-    animal:{
+    sword:{
         type: Object,
         required:true
     }
