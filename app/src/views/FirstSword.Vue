@@ -1,14 +1,22 @@
 <template>
     <div>
         <div>
-            <li v-for=" sword in swords" :key="sword.image,sword.name">{{sword.name , sword.image}}</li>
+            <li v-for=" sword in swords" :key="sword.name" :sword="sword">{{sword.name}}</li>
         </div>
+    </div>
+    <div>
+        <SwordCard v-for="sword in swords" :key="sword.name" :sword="sword">
+        {{ sword.name }}
+        {{ sword.part }}
+        {{ sword.description }}
+        </SwordCard>
     </div>
 </template>
 
 <script setup>
 import { swords } from 'vue'
-import { B } from 'vue-router/dist/index-Cu9B0wDz.mjs';
+/* import { B } from 'vue-router/dist/index-Cu9B0wDz.mjs'; */
+import SwordCard from '@/components/SwordCard.vue'
 const swords = [
     {
         name: "Spiked",

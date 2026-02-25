@@ -2,7 +2,8 @@
     <div class="blade">
         <h2>{{ sword.name }}</h2>
       <h3>{{ sword.part }}</h3>
-      <img class="BladeImg" src=${cry.BladeImg} alt="bladeIMG isnt working"/>
+      <h3>{{ sword.description }}</h3>
+<!--       <img class="BladeImg" :src="sword.BladeImg" alt="bladeIMG isnt working"/> -->
         
 </div>
 </template>
