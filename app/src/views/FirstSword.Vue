@@ -6,15 +6,13 @@
     </div>
     <div>
         <SwordCard v-for="sword in swords" :key="sword.name" :sword="sword">
-        {{ sword.name }}
-        {{ sword.part }}
-        {{ sword.description }}
+
         </SwordCard>
     </div>
 </template>
 
 <script setup>
-import { swords } from 'vue'
+/* import { swords } from 'vue' */
 /* import { B } from 'vue-router/dist/index-Cu9B0wDz.mjs'; */
 import SwordCard from '@/components/SwordCard.vue'
 const swords = [
@@ -130,7 +128,6 @@ const swords = [
         description: "Based off of the gaurdian spear. Not in the game;producer's choice.",
     },   
 ]
-
 
 </script>
 

@@ -17,6 +17,8 @@ defineProps({
         required:true
     }
 })
+let WhalenRebellion = document.querySelectorAll(".blade")
+   
 </script>
 
 
