@@ -6,6 +6,7 @@
 <!--       <img class="BladeImg" :src="sword.BladeImg" alt="bladeIMG isnt working"/> -->
         
 </div>
+<slot></slot>
 </template>
 
 

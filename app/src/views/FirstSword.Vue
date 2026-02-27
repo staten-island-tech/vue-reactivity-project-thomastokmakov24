@@ -15,6 +15,8 @@
 /* import { swords } from 'vue' */
 /* import { B } from 'vue-router/dist/index-Cu9B0wDz.mjs'; */
 import SwordCard from '@/components/SwordCard.vue'
+import { store } from '@/stores/store.js'/* empty list named store and a string like  */
+
 const swords = [
     {
         name: "Spiked",
