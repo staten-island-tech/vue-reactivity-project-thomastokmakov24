@@ -1,12 +1,12 @@
 <template>
     <div>
         <div>
-            <li v-for=" sword in swords" :key="sword.name" :sword="sword">{{sword.name}}</li>
+            <li v-for=" sword in swords" :key="sword.name" :sword="sword">{{ sword.part }}: {{sword.name}} . . . </li>
         </div>
     </div>
     <div>
         <SwordCard v-for="sword in swords" :key="sword.name" :sword="sword">
-
+            <button @click="addToPizza(animal)">Click Me</button>
         </SwordCard>
     </div>
 </template>
