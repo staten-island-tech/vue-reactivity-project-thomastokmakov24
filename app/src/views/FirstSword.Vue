@@ -1,12 +1,13 @@
 <template>
     <div>
         <div>
+            <ul>
             <li v-for=" sword in swords" :key="sword.name" :sword="sword">{{ sword.part }}: {{sword.name}} . . . </li>
-        </div>
+            </ul>        </div>
     </div>
     <div>
         <SwordCard v-for="sword in swords" :key="sword.name" :sword="sword">
-            <button @click="addToPizza(animal)">Click Me</button>
+            <button @click="addToSword(sword)">Click Me</button>
         </SwordCard>
     </div>
 </template>
@@ -130,6 +131,37 @@ const swords = [
         description: "Based off of the gaurdian spear. Not in the game;producer's choice.",
     },   
 ]
+
+let checkForDupes = function(blank){
+    if (blank.sword.part === "Pommel") {
+        if (div1.children.length > 0) {
+            div1.removeChild(div1.children[0]);
+        }
+    } else if (blank.sword.part === "Grip") {
+        if (div2.children.length > 0) {
+            div2.removeChild(div2.children[0]);
+        }
+    } else if (blank.sword.part === "CrossGuard") {
+        if (div3.children.length > 0) {
+            div3.removeChild(div3.children[0]);
+        }
+    } else if (blank.sword.part === "Blade") {
+        if (div4.children.length > 0) {
+            div4.removeChild(div4.children[0]);
+        }
+    }
+}
+
+let addToSword = function(sword){
+    let button = document.querySelector("button");
+    let blank = button.target.closest(".sword-card");
+
+    blank.classList.add("selected");
+    if (blank.classList.contains("selected")) {
+        div3.appendChild(blank);
+        checkForDupes(blank);       
+}
+}
 
 </script>
 
