@@ -1,4 +1,12 @@
 <template>
+    <divSelected class="divSelected"> gg
+        <div1>g</div1>
+        <div2>g</div2>
+        <div3>gangster</div3>
+        <div4>holybum bum</div4>
+    </divSelected>
+
+
     <div>
         <div>
             <ul>
@@ -13,12 +21,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 /* import { swords } from 'vue' */
 /* import { B } from 'vue-router/dist/index-Cu9B0wDz.mjs'; */
 import SwordCard from '@/components/SwordCard.vue'
 import { store } from '@/stores/store.js'/* empty list named store and a string like  */
 
-const swords = [
+const swords = ref([
     {
         name: "Spiked",
         part: "Pommel",
@@ -130,7 +139,7 @@ const swords = [
         BladeImg: "",
         description: "Based off of the gaurdian spear. Not in the game;producer's choice.",
     },   
-]
+])
 
 let checkForDupes = function(blank){
     if (blank.sword.part === "Pommel") {
@@ -153,13 +162,14 @@ let checkForDupes = function(blank){
 }
 
 let addToSword = function(sword){
-    let button = document.querySelector("button");
-    let blank = button.target.closest(".sword-card");
+
+    let blank = sword.target.closest(SwordCard);
 
     blank.classList.add("selected");
     if (blank.classList.contains("selected")) {
-        div3.appendChild(blank);
-        checkForDupes(blank);       
+        checkForDupes(blank);    
+        divSelected.appendChild(blank);
+
 }
 }
 
