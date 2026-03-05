@@ -1,9 +1,10 @@
 <template>
-    <divSelected class="divSelected"> gg
-        <div1>g</div1>
-        <div2>g</div2>
-        <div3>gangster</div3>
-        <div4>holybum bum</div4>
+    <divSelected class="divSelected"> 
+        <div>Index</div>
+        <div class="div1">g</div>
+        <div class ="div2">gangster</div>
+        <div class="div3">gang</div>
+        <div class="div4">holybum bum</div>
     </divSelected>
 
 
@@ -15,7 +16,7 @@
     </div>
     <div>
         <SwordCard v-for="sword in swords" :key="sword.name" :sword="sword">
-            <button @click="addToSword(sword)">Click Me</button>
+            <button @click="addToSword(sword)">Click Me</button><!-- is like a foreach of the sword in swords, it creates a button that haAS ATTRIBUTES of the sword that it is for each to. -->
         </SwordCard>
     </div>
 </template>
@@ -26,7 +27,9 @@ import { ref } from 'vue'
 /* import { B } from 'vue-router/dist/index-Cu9B0wDz.mjs'; */
 import SwordCard from '@/components/SwordCard.vue'
 import { store } from '@/stores/store.js'/* empty list named store and a string like  */
-
+swords.array.forEach(element => {
+    element.classList.add(unselected = false);
+});
 const swords = ref([
     {
         name: "Spiked",
@@ -140,21 +143,27 @@ const swords = ref([
         description: "Based off of the gaurdian spear. Not in the game;producer's choice.",
     },   
 ])
+/* selector defnitions */
+const div1 = document.querySelector(".div1");
+const div2 = document.querySelector(".div2");
+const div3 = document.querySelector(".div3");
+const div4 = document.querySelector(".div4");
 
-let checkForDupes = function(blank){
-    if (blank.sword.part === "Pommel") {
+
+let checkForDupes = function(sword){
+    if (sword.part === "Pommel") {
         if (div1.children.length > 0) {
             div1.removeChild(div1.children[0]);
         }
-    } else if (blank.sword.part === "Grip") {
+    } else if (sword.part === "Grip") {
         if (div2.children.length > 0) {
             div2.removeChild(div2.children[0]);
         }
-    } else if (blank.sword.part === "CrossGuard") {
+    } else if (sword.part === "CrossGuard") {
         if (div3.children.length > 0) {
             div3.removeChild(div3.children[0]);
         }
-    } else if (blank.sword.part === "Blade") {
+    } else if (sword.part === "Blade") {
         if (div4.children.length > 0) {
             div4.removeChild(div4.children[0]);
         }
@@ -162,17 +171,26 @@ let checkForDupes = function(blank){
 }
 
 let addToSword = function(sword){
-
-    let blank = sword.target.closest(SwordCard);
-
-    blank.classList.add("selected");
+    sword.unselected = true;
+    if (sword.part === "Pommel") {
+        div1.innerHTML += `<div>${sword.name}, ${sword.BladeImg}</div>`;
+    } else if (sword.part === "Grip") {
+        div2.innerHTML += `<div>${sword.name}, ${sword.BladeImg}</div>`;
+    } else if (sword.part === "CrossGuard") {
+        div3.innerHTML += `<div>${sword.name}, ${sword.BladeImg}</div>`;
+    } else if (sword.part === "Blade") {
+        div4.innerHTML += `<div>${sword.name}, ${sword.BladeImg}</div>`;
+    }
+}
     if (blank.classList.contains("selected")) {
         checkForDupes(blank);    
         divSelected.appendChild(blank);
 
-}
-}
-
+} /* else {
+    blank.classList.add("selected");
+    divSelected.appendChild(blank);
+} CHECK THIS SHIET
+ */
 </script>
 
 <style lang="scss" scoped>
