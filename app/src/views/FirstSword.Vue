@@ -1,11 +1,23 @@
 <template>
-    <divSelected class="divSelected"> 
-        <div>Index</div>
-        <div class="div1">g</div>
-        <div class ="div2">gangster</div>
-        <div class="div3">gang</div>
-        <div class="div4">holybum bum</div>
-    </divSelected>
+<div class="divSelected">
+
+  <div class="div1">
+    {{ selected.Pommel?.name }}
+  </div>
+
+  <div class="div2">
+    {{ selected.Grip?.name }}
+  </div>
+
+  <div class="div3">
+    {{ selected.CrossGuard?.name }}
+  </div>
+
+  <div class="div4">
+    {{ selected.Blade?.name }}
+  </div>
+
+</div>
 
 
     <div>
@@ -27,59 +39,59 @@ import { ref } from 'vue'
 /* import { B } from 'vue-router/dist/index-Cu9B0wDz.mjs'; */
 import SwordCard from '@/components/SwordCard.vue'
 import { store } from '@/stores/store.js'/* empty list named store and a string like  */
-swords.array.forEach(element => {
+/* swords.array.forEach(element => {
     element.classList.add(unselected = false);
-});
+}); */
 const swords = ref([
     {
         name: "Spiked",
         part: "Pommel",
-        BladeImg: "",//make simple pixel arts bu t wait a bit until you are 100% shore u wanna do it or so that i dont gotta turn back and change the format to be invisisble or a jpeg or some. 
+        BladeImg: "/Spiked.png",//make simple pixel arts bu t wait a bit until you are 100% shore u wanna do it or so that i dont gotta turn back and change the format to be invisisble or a jpeg or some. 
         description: "Made for those situations when theres so many enemies in the shower that you cant swing your sword in any direction but you still gotta defeat in every blow. ",
     },        {
         name: "Pumpkin",
         part: "Pommel",
-        BladeImg: "",
+        BladeImg: "/Pumpkin.png",
         description: "A heavy pommel, great for easy rotations of the blade but bad at lunges or pommel strikes. ",
     },        {
         name: "None",
         part: "Pommel",
-        BladeImg: "",
+        BladeImg: "/None.png",
         description: "Grip then nothing. I once had a sword like this but it flew out of my hands and welp, i got a free skull crossguard :D!",
     },        {
         name: "Basic",
         part: "Pommel",
-        BladeImg: "",
+        BladeImg: "/Basic.png",
         description: "I forgot which pommel was basic in my mind so imma make this up as i go.",
     },        {
         name: "Chained",
         part: "Pommel",
-        BladeImg: "",// grip starts here
+        BladeImg: "/Chained.png",// grip starts here
         description: "Sound Ninja Hashira's pommel. His wives look at them funny ",
     },    {
         name: "Leather Wrapped",
         part: "Grip",
-        BladeImg: "",
+        BladeImg: "/LeatherWrapped.png",
         description: "This one is good luck ;)",
     },    {
         name: "Textured",
         part: "Grip",
-        BladeImg: "",
+        BladeImg: "/Textured.png",
         description: "That one land shark guy's from naruto",
     },    {
         name: "Leather Wrapped",
         part: "Grip",
-        BladeImg: "",
+        BladeImg: "/Bloody.png",
         description: "Pretty cool but the owner's hands always ALWAYS bleed on it. Bad Luck",
     },    {
         name: "Diamond Cut",
         part: "Grip",
-        BladeImg: "",
+        BladeImg: "/Steel.png",
         description: "Common af",
     },    {
         name: "Winged",
         part: "CrossGuard",
-        BladeImg: "",
+        BladeImg: "/Winged.png",
         description: "Design choice tbh",
     },    {
         name: "Crab-Eyed",
@@ -143,11 +155,11 @@ const swords = ref([
         description: "Based off of the gaurdian spear. Not in the game;producer's choice.",
     },   
 ])
-/* selector defnitions */
+/* selector defnitions
 const div1 = document.querySelector(".div1");
 const div2 = document.querySelector(".div2");
 const div3 = document.querySelector(".div3");
-const div4 = document.querySelector(".div4");
+const div4 = document.querySelector(".div4"); */
 
 
 let checkForDupes = function(sword){
@@ -169,8 +181,16 @@ let checkForDupes = function(sword){
         }
     }
 }
-
-let addToSword = function(sword){
+const selected = ref({
+  Pommel: null,
+  Grip: null,
+  CrossGuard: null,
+  Blade: null
+})
+function addToSword(sword) {
+  selected.value[sword.part] = sword
+}
+/* let addToSword = function(sword){
     sword.unselected = true;
     if (sword.part === "Pommel") {
         div1.innerHTML += `<div>${sword.name}, ${sword.BladeImg}</div>`;
@@ -181,12 +201,13 @@ let addToSword = function(sword){
     } else if (sword.part === "Blade") {
         div4.innerHTML += `<div>${sword.name}, ${sword.BladeImg}</div>`;
     }
-}
-    if (blank.classList.contains("selected")) {
+} */
+
+/*     if (blank.classList.contains("selected")) {
         checkForDupes(blank);    
         divSelected.appendChild(blank);
 
-} /* else {
+} */ /* else {
     blank.classList.add("selected");
     divSelected.appendChild(blank);
 } CHECK THIS SHIET

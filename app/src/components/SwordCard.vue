@@ -2,11 +2,11 @@
     <div class="blade">
         <h2>{{ sword.name }}</h2>
       <h3>{{ sword.part }}</h3>
-      <h3>{{ sword.description }}</h3>
-<!--       <img class="BladeImg" :src="sword.BladeImg" alt="bladeIMG isnt working"/> -->
-        
+      <p>{{ sword.description }}</p>
+      <img class="BladeImg" :src="sword.BladeImg" alt="bladeIMG isnt working"/>
+        <slot></slot>
 </div>
-<slot></slot>
+
 </template>
 
 
@@ -18,7 +18,7 @@ defineProps({
         required:true
     }
 })
-let WhalenRebellion = document.querySelectorAll(".blade")
+
    
 </script>
 
