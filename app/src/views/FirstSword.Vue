@@ -1,36 +1,40 @@
 <template>
-<div class="divSelected">
+<div class="page">
 
-  <div class="div1">
-    {{ selected.Pommel?.name }}
+  <!-- l -->
+  <div class="swordPreview">
+
+    <img v-if="selected.Blade" :src="selected.Blade.BladeImg" class="swordPart blade"/>
+    <img v-if="selected.CrossGuard" :src="selected.CrossGuard.BladeImg" class="swordPart cross"/>
+    <img v-if="selected.Grip" :src="selected.Grip.BladeImg" class="swordPart grip"/>
+    <img v-if="selected.Pommel" :src="selected.Pommel.BladeImg" class="swordPart pommel"/>
+
   </div>
 
-  <div class="div2">
-    {{ selected.Grip?.name }}
-  </div>
 
-  <div class="div3">
-    {{ selected.CrossGuard?.name }}
-  </div>
+  <!-- r -->
+  <div class="cardPanel">
 
-  <div class="div4">
-    {{ selected.Blade?.name }}
+    <SwordCard
+      v-for="sword in swords"
+      :key="sword.name"
+      :sword="sword"
+    >
+      <button class="addBtn" @click="addToSword(sword)">
+        Click Me
+      </button>
+
+    </SwordCard>
+
   </div>
 
 </div>
 
-
-    <div>
-        <div>
-            <ul>
-            <li v-for=" sword in swords" :key="sword.name" :sword="sword">{{ sword.part }}: {{sword.name}} . . . </li>
-            </ul>        </div>
-    </div>
-    <div>
+    <!--<div>
         <SwordCard v-for="sword in swords" :key="sword.name" :sword="sword">
-            <button @click="addToSword(sword)">Click Me</button><!-- is like a foreach of the sword in swords, it creates a button that haAS ATTRIBUTES of the sword that it is for each to. -->
+            <button @click="addToSword(sword)">Click Me</button>
         </SwordCard>
-    </div>
+    </div> -->
 </template>
 
 <script setup>
@@ -96,62 +100,62 @@ const swords = ref([
     },    {
         name: "Crab-Eyed",
         part: "CrossGuard",
-        BladeImg: "",
+        BladeImg: "/Crab.png",
         description: "Similar to horned but with less detail.",
     },    {
         name: "Horned",
         part: "CrossGuard",
-        BladeImg: "",
+        BladeImg: "/Horned.png",
         description: "Too many variations of this one.",
     },    {
         name: "Yapping Skull",
         part: "CrossGuard",
-        BladeImg: "",
+        BladeImg: "/yap.png",
         description: "Capt.'s Skelly, otherwise the one training dummy that Achiles stole",
     },    {
         name: "Skull",
         part: "CrossGuard",
-        BladeImg: "",
+        BladeImg: "/skull.png",
         description: "Some dude's head got skewered by sword and his 5 year old aunt's birthday party. Now he lives on as a crossguard. ",
     },    {
         name: "Ichigo's first",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/Ichigo.png",
         description: "Actually, it is that one sound ninja hashira's blade.",
     },       {
         name: "Zenitsu's",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/spark.png",
         description: "Taser Taser Taser",
     },       {
         name: "Inosuke's",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/jag.png",
         description: "Beaten by my owner whom i was given to by my father. It changed who I am.",
     },       {
         name: "Black",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/black.png",
         description: "Why are you even looking at this? It's just a black blade. ",
     },       {
         name: "Mihawk's butter knife",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/mihawk.png",
         description: "It's about how you use it, not the size of it. ",
     },       {
         name: "Zagreus's Original",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/stygian.png",
         description: "Only used in the tutorial; never touched again.",
     },       {
         name: "Zagreus's Excalibur",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/zaG.png",
         description: "Upgrade the worst sword in the game to max level to unlock this. Whole concept is 'who will die first but I have a defensive aura.'",
     },       {
         name: "Link's Gaurdian Sword",
         part: "Blade",
-        BladeImg: "",
+        BladeImg: "/link.png",
         description: "Based off of the gaurdian spear. Not in the game;producer's choice.",
     },   
 ])
@@ -161,7 +165,7 @@ const div2 = document.querySelector(".div2");
 const div3 = document.querySelector(".div3");
 const div4 = document.querySelector(".div4"); */
 
-
+/* 
 let checkForDupes = function(sword){
     if (sword.part === "Pommel") {
         if (div1.children.length > 0) {
@@ -180,7 +184,7 @@ let checkForDupes = function(sword){
             div4.removeChild(div4.children[0]);
         }
     }
-}
+} */
 const selected = ref({
   Pommel: null,
   Grip: null,
@@ -214,6 +218,49 @@ function addToSword(sword) {
  */
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.page{
+  display:flex;
+  height:100vh;
+}
 
+/* to make the left side of ts */
+.swordPreview{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:-30px;
+}
+
+
+.cardPanel{
+  flex:2;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+  padding:20px;
+  overflow-y:auto;
+}
+
+.swordPart{
+  width:120px;
+}
+
+/* .blade{
+
+}
+
+.cross{
+
+}
+
+.grip{
+
+} */
+
+.pommel{
+  transform: rotate(180deg);/* adjust this if i want, its just there cuz there is some space btw them and it can move one to be on top the other.  */
+}
 </style>
